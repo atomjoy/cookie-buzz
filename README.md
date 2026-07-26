@@ -42,7 +42,7 @@ Change your cookie banner js actions.
 Save to **view/components/gtag.blade.php** and add to page **head** tag.
 
 ```php
-<!-- @include('components.gtag-banner', ['gtmId' => 'GTM-XXXXXXX']) -->
+<!-- @include('components.gtag', ['gtmId' => 'GTM-XXXXXXX']) -->
 
 @props([
     'gtmId' => null, // Set TAG_ID GTM
