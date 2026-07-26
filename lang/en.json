@@ -1,3 +1,22 @@
 {
-	"cookie-buzz": "Cookie Buzz Welcome!"
+	"cookie-buzz": "Cookie Buzz Welcome!",
+	"Cookie update": "Cookie update",
+	"Cookie Preferences": "Cookie Preferences",
+	"You can customize your cookie preferences below.": "You can customize your cookie preferences below.",
+	"Essential Cookies": "Essential Cookies",
+	"These cookies are essential for the website to function properly.": "These cookies are essential for the website to function properly.",
+	"Analytics Cookies": "Analytics Cookies",
+	"These cookies help us understand how visitors interact with our website.": "These cookies help us understand how visitors interact with our website.",
+	"Marketing Cookies": "Marketing Cookies",
+	"These cookies are used for advertising and tracking purposes.": "These cookies are used for advertising and tracking purposes.",
+	"Preferences Cookies": "Preferences Cookies",
+	"These cookies allow the website to remember user preferences.": "These cookies allow the website to remember user preferences.",
+	"Click the checkbox to update your cookie policy.": "Click the checkbox to update your cookie policy.",
+	"Cookie Disclaimer": "Cookie Disclaimer",
+	"This website uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. By continuing to use this site, you consent to our use of cookies.": "This website uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. By continuing to use this site, you consent to our use of cookies.",
+	"Manage preferences": "Manage preferences",
+	"Privacy Policy": "Privacy Policy",
+	"Terms and Conditions": "Terms and Conditions",
+	"Accept all": "Accept all",
+	"Reject all": "Reject all"
 }

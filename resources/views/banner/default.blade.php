@@ -1,7 +1,7 @@
 @props(['cookieConfig' => null])
 
 @php
-    $prefix = config('cookie-buzz.cookie_prefix', 'cookie_prefix');
+    $prefix = md5(config('cookie-buzz.cookie_prefix', 'cookie_prefix'));
     $categories = json_encode(config('cookie-buzz.cookie_categories'));
     $icon = config('cookie-buzz.cookie_icon_public_path');
 	$icon_url = app()->request->getSchemeAndHttpHost() . '/' . ltrim($icon, '/');
@@ -21,10 +21,10 @@
 		<div class="cookie-buzz-button-container">
 			<div class="cookie-buzz-button-action">
 				<button type="button" id="cookie-buzz-accept" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept all cookies')">
-					@lang(config('cookie_accept_btn_text', 'Accept'))
+					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept all'))
 				</button>
 				<button type="button" id="cookie-buzz-reject" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject all cookies')">
-					@lang(config('cookie_reject_btn_text', 'Reject'))
+					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject all'))
 				</button>
 			</div>
 
@@ -131,7 +131,7 @@
 
 	function toggleCookieBuzzBanner() {
 		cookieBuzzBanner.classList.toggle('hide-banner')
-		localStorage.setItem('cookie-buuz-banner', localStorage.getItem('cookie-buuz-banner') == 1 ? 0 : 1)
+		localStorage.setItem('cookie-buuz-banner-{{ $prefix }}', localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') == 1 ? 0 : 1)
 	}
 
 	function cookieBuzzUpdate(checkbox) {
@@ -141,7 +141,7 @@
 		if(checkbox.checked){
 			evalAction(checkbox.dataset.action)
 		}
-		console.log("Update cookie key", localStorage.getItem(key), "Key", key);
+		console.log("Update cookie key:", key, "Value:", localStorage.getItem(key));
 	}
 
 	function evalAction(name) {
@@ -187,7 +187,7 @@
 	}
 
 	function loadCookieBuzzBanner() {
-		const hide = localStorage.getItem('cookie-buuz-banner') ?? 0
+		const hide = localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') ?? 0
 		if(hide == 1) {
 			cookieBuzzBanner.classList.add('hide-banner')
 		} else {

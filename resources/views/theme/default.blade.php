@@ -1,4 +1,12 @@
 <style>
+:root {
+	--cookie-color-green: #099949;
+	--cookie-color-blue: #0a5dbd;
+	--cookie-color-orange: #ea8600;
+	--cookie-color-red: #eb0248;
+	--cookie-color-checkbox: #e6f4ea;
+}
+
 #cookie-buzz-icon {
 	float: left;
 	width: 40px;
@@ -38,7 +46,6 @@
 #cookie-buzz-banner {
 	background: #fff;
 	color: #000;
-	padding: 20px;
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
@@ -61,12 +68,18 @@
 	max-height: 100%;
 	overflow: hidden;
 	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
 }
 
 #cookie-buzz-banner-header {
+	float: left;
+	width: 100%;
+	padding: 15px;
+	padding-bottom: 0px;
 	display: flex;
 	align-items: center;
-	margin-bottom: 15px
+	margin-bottom: 15px;
 }
 
 .cookie-buzz-categories {
@@ -84,6 +97,7 @@
 .cookie-buzz-button-container {
 	float: left;
 	width: 100%;
+	padding: 15px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -92,15 +106,28 @@
 .cookie-buzz-links-container {
 	float: left;
 	width: 100%;
+	padding: 10px 15px;
 	display: flex;
+	align-items: center;
+	background: #f9f9f9;
+}
+
+.cookie-buzz-link-item {
+	float: left;
+	margin-right: 10px;
+	font-size: 13px;
+	color: #111;
 }
 
 .cookie-buzz-banner-title {
 	font-size: 16px;
-	font-weight: 600
+	font-weight: 600;
 }
 
 .cookie-buzz-banner-description {
+	float: left;
+	width: 100%;
+	padding-inline: 15px;
 	font-size: 15px;
 	opacity: .7;
 }
@@ -119,7 +146,7 @@
 	float: left;
 	width: 100%;
 	margin-top: 10px;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .cookie-buzz-category {
@@ -139,16 +166,9 @@
 }
 
 .cookie-buzz-category-description {
-	font-size: 15px;
+	font-size: 14px;
 	margin-top: 5px;
 	opacity: .7;
-}
-
-.cookie-buzz-link-item {
-	float: left;
-	margin-top: 15px;
-	margin-right: 10px;
-	font-size: 14px;
 }
 
 .cookie-buzz-button {
@@ -157,14 +177,13 @@
 	padding: 5px 10px;
 	background: #111;
 	color: #fff;
-	margin-top: 15px;
 	margin-right: 15px;
 	border-radius: 6px;
 	transition: all .6s;
 	cursor: pointer;
 }
 
-.cookie-buzz-preferences-save {
+.cookie-buzz-button-preferences {
 	float: right;
 	margin-right: 0px;
 }
@@ -178,35 +197,11 @@
 }
 
 .cookie-buzz-accept:hover, .cookie-buzz-preferences-accept:hover {
-	background: #55cc55;
+	background: #099949;
 }
 
 .cookie-buzz-reject:hover, .cookie-buzz-preferences-reject:hover {
 	background: #eb0248;
-}
-
-/* Banner toggle */
-#cookie-buzz-banner-wrapper.hide-banner {
-    display: none;
-    pointer-events: none;
-}
-
-/* Modal preferences toggle */
-#cookie-buzz-preferences-wrapper.is-visible {
-    display: inherit;
-    pointer-events: auto;
-}
-
-/* Toggle cookie banner */
-#cookie-buzz-preferences-toggle {
-	float: left;
-	margin: 5px;
-	font-size: 14px;
-	padding: 5px 10px;
-	color: #fff;
-	background: #111;
-	border-radius: 6px;
-	cursor: pointer;
 }
 
 /* Improved Toggle Switch */
@@ -249,7 +244,7 @@
 }
 
 .cookie-toggle input:checked + .cookie-toggle-slider {
-    background-color: #55cc5533;
+    background-color: #e6f4ea;
 }
 
 .cookie-toggle input:checked + .cookie-toggle-slider:before {
@@ -263,5 +258,29 @@
 
 .cookie-toggle input:focus + .cookie-toggle-slider {
     box-shadow: none;
+}
+
+/* Banner toggle */
+#cookie-buzz-banner-wrapper.hide-banner {
+    display: none;
+    pointer-events: none;
+}
+
+/* Modal preferences toggle */
+#cookie-buzz-preferences-wrapper.is-visible {
+    display: inherit;
+    pointer-events: auto;
+}
+
+/* Toggle cookie banner */
+#cookie-buzz-preferences-toggle {
+	float: left;
+	margin: 5px;
+	font-size: 14px;
+	padding: 5px 10px;
+	color: #fff;
+	background: #111;
+	border-radius: 6px;
+	cursor: pointer;
 }
 </style>

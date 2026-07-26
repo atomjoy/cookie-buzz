@@ -104,11 +104,11 @@ return [
     'policy_links' => [
         [
             'text' => 'Privacy Policy',
-            'link' => env('COOKIE_BUZZ_PRIVACY_POLICY_URL', '') ?? url('privacy-policy')
+            'link' => env('COOKIE_BUZZ_PRIVACY_POLICY_URL', '/privacy-policy')
         ],
         [
             'text' => 'Terms and Conditions',
-            'link' => env('COOKIE_BUZZ_TERMS_URL', '') ?? url('terms-and-conditions')
+            'link' => env('COOKIE_BUZZ_TERMS_URL', '/terms-and-conditions')
         ],
     ],
 ];

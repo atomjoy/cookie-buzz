@@ -1,3 +1,22 @@
 {
-	"cookie-buzz": "Cookie Buzz Wita!"
+	"cookie-buzz": "Cookie Buzz Wita!",
+	"Cookie update": "Aktualizuj cookie",
+	"Cookie Preferences": "Ustawienia Ciasteczek",
+	"You can customize your cookie preferences below.": "Poniżej możesz dostosować swoje preferencje dotyczące plików cookie.",
+	"Essential Cookies": "Niezbędne pliki cookie",
+	"These cookies are essential for the website to function properly.": "Te pliki cookie są niezbędne do prawidłowego funkcjonowania witryny.",
+	"Analytics Cookies": "Analityczne pliki cookie",
+	"These cookies help us understand how visitors interact with our website.": "Te pliki cookie pomagają nam zrozumieć, w jaki sposób odwiedzający wchodzą w interakcję z naszą witryną.",
+	"Marketing Cookies": "Marketingowe pliki cookie",
+	"These cookies are used for advertising and tracking purposes.": "Te pliki cookie służą celom reklamowym i śledzącym.",
+	"Preferences Cookies": "Preferencje dotyczące plików cookie",
+	"These cookies allow the website to remember user preferences.": "Te pliki cookie pozwalają witrynie internetowej zapamiętać preferencje użytkownika.",
+	"Click the checkbox to update your cookie policy.": "Kliknij pole wyboru, aby zaktualizować swoją politykę plików cookie.",
+	"Cookie Disclaimer": "Zastrzeżenie dotyczące plików cookie",
+	"This website uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. By continuing to use this site, you consent to our use of cookies.": "Ta strona korzysta z plików cookie, aby ulepszyć komfort przeglądania, analizować ruch na stronie i personalizować treści. Kontynuując korzystanie z tej strony, wyrażasz zgodę na używanie przez nas plików cookie.",
+	"Manage preferences": "Zmień ustawienia",
+	"Privacy Policy": "Polityka prywatności",
+	"Terms and Conditions": "Warunki korzystania z serwisu",
+	"Accept all": "Akceptuj",
+	"Reject all": "Odrzuć"
 }
