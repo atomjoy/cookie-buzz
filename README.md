@@ -24,7 +24,7 @@ Change your cookie banner js actions.
 ```php
 <head>
     <!-- CookieBuzz Js Actions -->
-    // @include('cookie-buzz::banner.actions', ['gtmId' => 'G-XXXXXXX', 'pixelId' => 'FB-XXXXXXX'])
+    // @include('cookie-buzz::banner.actions', ['gtmId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX'])
     <!-- CookieBuzz Js Actions Example -->
     @include('cookie-buzz::banner.actions-mini')
     <!-- CookieBuzz Style -->

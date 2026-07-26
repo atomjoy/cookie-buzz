@@ -1,4 +1,4 @@
-{{-- @include('cookie-buz:banner.actions', ['gtmId' => 'GTM-XXXXXXX', 'pixelId' => 'FB-XXXXXXX']) --}}
+{{-- @include('cookie-buz:banner.actions', ['gtmId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX']) --}}
 
 @props([
     'gtmId' => null, // Set TAG_ID GTM
