@@ -60,4 +60,4 @@ php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --t
 
 ## Screen
 
-<img src="https://raw.githubusercontent.com/atomjoy/cookie-buzz/main/cookie-banner.webp" width="100%">
+<img src="https://raw.githubusercontent.com/atomjoy/cookie-buzz/refs/heads/main/cookie-buzz-banner.webp" width="100%">
