@@ -19,9 +19,11 @@ php artisan vendor:publish --tag=cookie-buzz-images --force
 
 ## Configure
 
+Change your cookie banner js actions.
+
 ```php
 <head>
-    <!-- CookieBuzz Js Actions -->
+    <!-- CookieBuzz Js Actions Example -->
     @include('cookie-buzz::banner.actions')
     <!-- CookieBuzz Style -->
     @include('cookie-buzz::theme.default')
