@@ -344,5 +344,7 @@
 	width: 100%;
 	padding: 10px 15px;
 	margin-bottom: 5px;
+	font-size: 14px;
+	opacity: .75;
 }
 </style>
