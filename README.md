@@ -1,6 +1,6 @@
 # Cookie Consent Banner in Laravel
 
-CookieBuzz Cookie Consent Banner for Google Analytics and FacebookPixel.
+CookieBuzz Cookie Consent Banner for Google Analytics and FacebookPixel (dark mode and translations).
 
 ## Install
 
@@ -10,7 +10,7 @@ cd test
 composer require atomjoy/cookie-buzz
 ```
 
-### After Install
+### After install
 
 ```sh
 # Publish images to public/vendor/cookie-buzz
@@ -27,7 +27,7 @@ Change your cookie banner js actions.
     // @include('cookie-buzz::banner.actions', ['gtmId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX'])
     <!-- CookieBuzz Js Actions Example -->
     @include('cookie-buzz::banner.actions-mini')
-    <!-- CookieBuzz Style -->
+    <!-- CookieBuzz Css Style -->
     @include('cookie-buzz::theme.default')
 </head>
 
@@ -142,7 +142,7 @@ php artisan serve
 php artisan serve --host=localhost --port=8000
 ```
 
-## Publish Theme For Edit (optional)
+## Publish config, themes, translations (optional)
 
 ```sh
 # In public/vendor/cookie-buzz
@@ -155,10 +155,6 @@ php artisan vendor:publish --tag=cookie-buzz-config --force
 # Sample with provider package
 php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --tag="images"
 ```
-
-## Screen
-
-<img src="https://raw.githubusercontent.com/atomjoy/cookie-buzz/refs/heads/main/cookie-buzz-banner.webp" width="100%">
 
 ## Google gtag manager event
 
@@ -210,3 +206,8 @@ php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --t
     });
 </script>
 ```
+
+## Screen
+
+<img src="https://raw.githubusercontent.com/atomjoy/cookie-buzz/refs/heads/main/cookie-buzz-banner.webp" width="100%">
+<img src="https://raw.githubusercontent.com/atomjoy/cookie-buzz/refs/heads/main/cookie-buzz-banner-dark.webp" width="100%">
