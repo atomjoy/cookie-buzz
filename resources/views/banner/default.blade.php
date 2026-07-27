@@ -97,10 +97,10 @@
 
 		<div class="cookie-buzz-preferences-modal-footer">
             <div class="cookie-buzz-preferences-group">
-				<button type="button" id="cookie-buzz-accept-preferences" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept cookies')">
+				<button type="button" id="cookie-buzz-accept-preferences" class="cookie-buzz-button cookie-buzz-button-preferences-accept" aria-label="@lang('Accept cookies')">
 					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept all'))
 				</button>
-				<button type="button" id="cookie-buzz-reject-preferences" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject cookies')">
+				<button type="button" id="cookie-buzz-reject-preferences" class="cookie-buzz-button cookie-buzz-button-preferences-reject" aria-label="@lang('Reject cookies')">
 					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject all'))
 				</button>
             </div>

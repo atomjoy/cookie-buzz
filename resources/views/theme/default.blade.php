@@ -1,10 +1,31 @@
 <style>
 :root {
+	--cookie-color-bg: #ffffff;
+	--cookie-color-text: #111111;
+	--cookie-color-policy-bg: #f0f0f0;
+	--cookie-color-btn-bg: #111;
+	--cookie-color-btn-text: #fff;
+	--cookie-color-checkbox: #ccc;
+	--cookie-color-checkbox-enabled: #b9f4ca;
+	--cookie-color-checkbox-disabled: #95a5a6;
+
 	--cookie-color-green: #099949;
 	--cookie-color-blue: #0a5dbd;
 	--cookie-color-orange: #ea8600;
 	--cookie-color-red: #eb0248;
-	--cookie-color-checkbox: #e6f4ea;
+	--cookie-color-mate: #e6f4ea;
+}
+
+
+[theme="dark"], .dark {
+    --cookie-color-bg: #161a1c;
+    --cookie-color-text: #f0f0f0;
+    --cookie-color-policy-bg: #111111;
+	--cookie-color-btn-bg: #fff;
+	--cookie-color-btn-text: #111;
+	--cookie-color-checkbox: #ccc;
+	--cookie-color-checkbox-enabled: #b9f4ca;
+	--cookie-color-checkbox-disabled: #95a5a6;
 }
 
 #cookie-buzz-icon {
@@ -28,7 +49,7 @@
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	background: #11111122;
+	background: #11111133;
 	z-index: 100000;
 }
 
@@ -39,13 +60,13 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #11111122;
+	background: #11111133;
 	z-index: 100001;
 }
 
 #cookie-buzz-banner {
-	background: #fff;
-	color: #000;
+	color: var(--cookie-color-text);
+	background: var(--cookie-color-bg);
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
@@ -56,8 +77,8 @@
 }
 
 #cookie-buzz-preferences {
-	color: #000;
-	background: #fff;
+	color: var(--cookie-color-text);
+	background: var(--cookie-color-bg);
 	position: absolute;
 	padding: 20px;
 	top: 50%;
@@ -109,14 +130,14 @@
 	padding: 10px 15px;
 	display: flex;
 	align-items: center;
-	background: #f9f9f9;
+	background: var(--cookie-color-policy-bg);
 }
 
 .cookie-buzz-link-item {
 	float: left;
 	margin-right: 10px;
 	font-size: 13px;
-	color: #111;
+	color: var(--cookie-color-text);
 }
 
 .cookie-buzz-banner-title {
@@ -175,8 +196,8 @@
 	font-size: 15px;
 	float: left;
 	padding: 5px 10px;
-	background: #111;
-	color: #fff;
+	color: var(--cookie-color-btn-text);
+	background: var(--cookie-color-btn-bg);
 	margin-right: 15px;
 	border-radius: 6px;
 	transition: all .6s;
@@ -188,20 +209,22 @@
 	margin-right: 0px;
 }
 
-.cookie-buzz-accept, .cookie-buzz-preferences-accept {
-	background: #111;
+.cookie-buzz-button-accept, .cookie-buzz-button-preferences-accept {
+	color: var(--cookie-color-btn-text);
+	background: var(--cookie-color-btn-bg);
 }
 
-.cookie-buzz-reject, .cookie-buzz-preferences-reject {
-	background: #111;
+.cookie-buzz-button-reject, .cookie-buzz-button-preferences-reject {
+	color: var(--cookie-color-btn-text);
+	background: var(--cookie-color-btn-bg);
 }
 
-.cookie-buzz-accept:hover, .cookie-buzz-preferences-accept:hover {
-	background: #099949;
+.cookie-buzz-button-accept:hover, .cookie-buzz-button-preferences-accept:hover {
+	background: var(--cookie-color-green);
 }
 
-.cookie-buzz-reject:hover, .cookie-buzz-preferences-reject:hover {
-	background: #eb0248;
+.cookie-buzz-button-reject:hover, .cookie-buzz-button-preferences-reject:hover {
+	background: var(--cookie-color-red);
 }
 
 .cookie-buzz-preferences-modal-footer {
@@ -231,7 +254,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--cookie-color-checkbox);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border-radius: 24px;
 }
@@ -244,13 +267,13 @@
     left: 2px;
     bottom: 2px;
     background-color: white;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .cookie-toggle input:checked + .cookie-toggle-slider {
-    background-color: #e6f4ea;
+    background-color: var(--cookie-color-checkbox-enabled);
 }
 
 .cookie-toggle input:checked + .cookie-toggle-slider:before {
@@ -258,7 +281,7 @@
 }
 
 .cookie-toggle input:disabled + .cookie-toggle-slider {
-    background-color: #95a5a6;
+    background-color: var(--cookie-color-checkbox-disabled);
     cursor: not-allowed;
 }
 
@@ -281,7 +304,7 @@
 /* Toggle cookie banner */
 #cookie-buzz-preferences-toggle {
 	float: left;
-	color: #111;
+	color: var(--cookie-color-text);
 	border-radius: 6px;
 	font-size: 14px;
 	cursor: pointer;
