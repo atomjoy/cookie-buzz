@@ -74,7 +74,7 @@ function loadMarketing() {
 }
 
 function rejectAnalytics() {
-    console.log("Analytics action works!");
+    console.log("Reject analytics action works!");
 
 	try {
 		gtag('consent', 'update', {
@@ -86,7 +86,7 @@ function rejectAnalytics() {
 }
 
 function rejectMarketing() {
-    console.log("Marketing action works!");
+    console.log("Reject marketing action works!");
 
 	try {
 		gtag('consent', 'update', {

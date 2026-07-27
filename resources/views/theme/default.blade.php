@@ -204,6 +204,12 @@
 	background: #eb0248;
 }
 
+.cookie-buzz-preferences-modal-footer {
+	float: left;
+	width: 100%;
+	padding-top: 10px;
+}
+
 /* Improved Toggle Switch */
 .cookie-toggle {
     position: relative;
@@ -275,12 +281,9 @@
 /* Toggle cookie banner */
 #cookie-buzz-preferences-toggle {
 	float: left;
-	margin: 5px;
-	font-size: 14px;
-	padding: 5px 10px;
-	color: #fff;
-	background: #111;
+	color: #111;
 	border-radius: 6px;
+	font-size: 14px;
 	cursor: pointer;
 }
 </style>

@@ -20,10 +20,10 @@
 
 		<div class="cookie-buzz-button-container">
 			<div class="cookie-buzz-button-action">
-				<button type="button" id="cookie-buzz-accept" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept all cookies')">
+				<button type="button" id="cookie-buzz-accept" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept cookies')">
 					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept all'))
 				</button>
-				<button type="button" id="cookie-buzz-reject" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject all cookies')">
+				<button type="button" id="cookie-buzz-reject" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject cookies')">
 					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject all'))
 				</button>
 			</div>
@@ -89,12 +89,21 @@
 					</div>
 				@endif
 			@endforeach
-		</div>
 
-        <div class="cookie-buzz-preferences-modal-footer">
 			<div class="cookie-buzz-preferences-tip">
 				@lang(config('cookie-buzz.cookie_modal_policy_text', 'Click the checkbox to update your cookie policy.'))
 			</div>
+		</div>
+
+		<div class="cookie-buzz-preferences-modal-footer">
+            <div class="cookie-buzz-preferences-group">
+				<button type="button" id="cookie-buzz-accept-preferences" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept cookies')">
+					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept all'))
+				</button>
+				<button type="button" id="cookie-buzz-reject-preferences" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject cookies')">
+					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject all'))
+				</button>
+            </div>
         </div>
 	</div>
 </div>
@@ -106,6 +115,8 @@
 	const cookieBuzzOpen = document.getElementById('cookie-buzz-preferences-open')
 	const cookieBuzzAccept = document.getElementById('cookie-buzz-accept')
 	const cookieBuzzReject = document.getElementById('cookie-buzz-reject')
+	const cookieBuzzAcceptPreferences = document.getElementById('cookie-buzz-accept-preferences')
+	const cookieBuzzRejectPreferences = document.getElementById('cookie-buzz-reject-preferences')
 
 	cookieBuzzClose.addEventListener('click', function(e) {
 		toggleCookieBuzzPreferences()
@@ -125,6 +136,16 @@
 		allowCookieBuzz()
 	})
 
+	cookieBuzzRejectPreferences.addEventListener('click', function(e) {
+		closeCookieBuzzBanner()
+		rejectCookieBuzz()
+	})
+
+	cookieBuzzAcceptPreferences.addEventListener('click', function(e) {
+		closeCookieBuzzBanner()
+		allowCookieBuzz()
+	})
+
 	function toggleCookieBuzzPreferences() {
 		cookieBuzzModal.classList.toggle('is-visible')
 	}
@@ -132,6 +153,11 @@
 	function toggleCookieBuzzBanner() {
 		cookieBuzzBanner.classList.toggle('hide-banner')
 		localStorage.setItem('cookie-buuz-banner-{{ $prefix }}', localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') == 1 ? 0 : 1)
+	}
+
+	function closeCookieBuzzBanner() {
+		cookieBuzzBanner.classList.add('hide-banner')
+		localStorage.setItem('cookie-buuz-banner-{{ $prefix }}', 1)
 	}
 
 	function cookieBuzzUpdate(checkbox) {

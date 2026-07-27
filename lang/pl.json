@@ -1,6 +1,7 @@
 {
 	"cookie-buzz": "Cookie Buzz Wita!",
 	"Cookie update": "Aktualizuj cookie",
+	"Cookie policy": "Polityka cookie",
 	"Cookie Preferences": "Ustawienia Ciasteczek",
 	"You can customize your cookie preferences below.": "Poniżej możesz dostosować swoje preferencje dotyczące plików cookie.",
 	"Essential Cookies": "Niezbędne pliki cookie",
@@ -18,5 +19,7 @@
 	"Privacy Policy": "Polityka prywatności",
 	"Terms and Conditions": "Warunki korzystania z serwisu",
 	"Accept all": "Akceptuj",
-	"Reject all": "Odrzuć"
+	"Reject all": "Odrzuć",
+	"Accept cookies": "Akceptuj ciasteczka",
+	"Reject cookies": "Odrzuć ciesteczka"
 }

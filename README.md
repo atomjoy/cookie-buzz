@@ -201,5 +201,12 @@ php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --t
         // You can also send a logout event
         gtag('event', 'logout');
     }
+
+    gtag('get', target, 'client_id', (id) => {
+        document.cookie = `ga_cid=${id}; path=/; SameSite=Lax`;
+    });
+    gtag('get', target, 'session_id', (id) => {
+        document.cookie = `ga_sid=${id}; path=/; SameSite=Lax`;
+    });
 </script>
 ```

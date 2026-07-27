@@ -1,6 +1,7 @@
 {
 	"cookie-buzz": "Cookie Buzz Welcome!",
 	"Cookie update": "Cookie update",
+	"Cookie policy": "Cookie policy",
 	"Cookie Preferences": "Cookie Preferences",
 	"You can customize your cookie preferences below.": "You can customize your cookie preferences below.",
 	"Essential Cookies": "Essential Cookies",
@@ -18,5 +19,7 @@
 	"Privacy Policy": "Privacy Policy",
 	"Terms and Conditions": "Terms and Conditions",
 	"Accept all": "Accept all",
-	"Reject all": "Reject all"
+	"Reject all": "Reject all",
+	"Accept cookies": "Accept cookies",
+	"Reject cookies": "Reject cookies"
 }
