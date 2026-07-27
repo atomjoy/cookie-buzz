@@ -31,10 +31,10 @@ return [
     'cookie_description' => "This website uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. By continuing to use this site, you consent to our use of cookies.",
 
     // Accept all cookies button text
-    'cookie_accept_btn_text' => 'Accept all',
+    'cookie_accept_btn_text' => 'Accept All',
 
     // Reject all cookies button text
-    'cookie_reject_btn_text' => 'Reject all',
+    'cookie_reject_btn_text' => 'Reject All',
 
     // Manage preferences button text
     'cookie_preferences_btn_text' => 'Manage preferences',

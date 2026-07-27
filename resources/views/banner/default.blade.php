@@ -19,12 +19,12 @@
 		<p class="cookie-buzz-banner-description">@lang(config('cookie-buzz.cookie_description'))</p>
 
 		<div class="cookie-buzz-button-container">
-			<div class="cookie-buzz-button-action">
+			<div class="cookie-buzz-button-actions">
 				<button type="button" id="cookie-buzz-accept" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept cookies')">
-					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept all'))
+					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept All'))
 				</button>
 				<button type="button" id="cookie-buzz-reject" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject cookies')">
-					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject all'))
+					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject All'))
 				</button>
 			</div>
 
@@ -129,10 +129,10 @@
 		<div class="cookie-buzz-preferences-modal-footer">
             <div class="cookie-buzz-preferences-group">
 				<button type="button" id="cookie-buzz-accept-preferences" class="cookie-buzz-button cookie-buzz-button-preferences-accept" aria-label="@lang('Accept cookies')">
-					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept all'))
+					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept All'))
 				</button>
 				<button type="button" id="cookie-buzz-reject-preferences" class="cookie-buzz-button cookie-buzz-button-preferences-reject" aria-label="@lang('Reject cookies')">
-					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject all'))
+					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject All'))
 				</button>
             </div>
         </div>

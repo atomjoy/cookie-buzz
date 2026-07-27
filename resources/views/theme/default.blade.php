@@ -122,9 +122,6 @@
 	float: left;
 	width: 100%;
 	padding: 15px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 }
 
 .cookie-buzz-links-container {
@@ -198,28 +195,33 @@
 .cookie-buzz-button {
 	font-size: 15px;
 	float: left;
-	padding: 5px 10px;
+	padding: 8px 10px;
 	color: var(--cookie-color-btn-text);
 	background: var(--cookie-color-btn-bg);
-	margin-right: 15px;
 	border-radius: 6px;
 	transition: all .6s;
 	cursor: pointer;
 }
 
 .cookie-buzz-button-preferences {
-	float: right;
-	margin-right: 0px;
+	float: left;
+	width: 100%;
+}
+
+.cookie-buzz-button-preferences:hover {
+	background: var(--cookie-color-orange);
 }
 
 .cookie-buzz-button-accept, .cookie-buzz-button-preferences-accept {
 	color: var(--cookie-color-btn-text);
 	background: var(--cookie-color-btn-bg);
+	width: 50%;
 }
 
 .cookie-buzz-button-reject, .cookie-buzz-button-preferences-reject {
 	color: var(--cookie-color-btn-text);
 	background: var(--cookie-color-btn-bg);
+	width: 50%;
 }
 
 .cookie-buzz-button-accept:hover, .cookie-buzz-button-preferences-accept:hover {
@@ -234,6 +236,25 @@
 	float: left;
 	width: 100%;
 	padding-top: 10px;
+}
+
+.cookie-buzz-preferences-group {
+	float: left;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.cookie-buzz-button-actions {
+	float: left;
+	width: 100%;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
 }
 
 /* Improved Toggle Switch */
