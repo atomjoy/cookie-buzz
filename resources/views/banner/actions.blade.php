@@ -66,8 +66,11 @@ function loadMarketing() {
 			ad_personalization: 'granted',
 		});
 
+@if($pixelId)
 		// Facebook
 		fbq('consent', 'grant');
+@endif
+
 	} catch (e) {
 		console.log(e);
 	}
@@ -95,8 +98,11 @@ function rejectMarketing() {
 			ad_personalization: 'denied',
 		});
 
+@if($pixelId)
 		// Facebook
 		fbq('consent', 'revoke');
+@endif
+
 	} catch (e) {
 		console.log(e);
 	}
