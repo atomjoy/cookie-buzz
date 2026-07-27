@@ -9,6 +9,9 @@
  */
 
 return [
+    // Cookie list type (summary, minimal)
+    'cookie_list' => env('COOKIE_BUZZ_LIST', 'summary'),
+
     // Cookie svg icon
     'cookie_icon_public_path' => 'vendor/cookie-buzz/cookie.svg',
 

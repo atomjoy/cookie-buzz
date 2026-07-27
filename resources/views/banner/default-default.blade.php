@@ -67,59 +67,28 @@
 		</div>
 
 		<div class="cookie-buzz-categories">
-			@if (config('cookie-buzz.cookie_list', 'minimal') == 'summary')
-				@foreach (config('cookie-buzz.cookie_categories') as $category => $details)
-					@if ($details['enabled'])
-						<details class="cookie-buzz-details animate__inview animate__animated animate__fadeIn">
-							<summary class="cookie-buzz-summary">
-								<span class="cookie-buzz-category-title"> {{ __($details['title']) }}</span>
-
-								<label class="cookie-toggle" style="float: right">
-									<input
-										type="checkbox"
-										id="cookie-buzz-checkbox-{{ $category }}"
-										{{ $details['locked'] ? 'disabled checked' : '' }}
-										data-category="{{ $category }}"
-										data-action="{{ $details['js_action'] ?? null }}"
-										aria-label="{{ __($details['title']) }} toggle"
-										onclick="cookieBuzzUpdate(this)"
-									>
-									<span class="cookie-toggle-slider"></span>
-								</label>
-							</summary>
-
-							<div class="cookie-buzz-summary-description">
-								{{ __($details['description']) }}
-							</div>
-						</details>
-					@endif
-				@endforeach
-			@endif
-
-			@if (config('cookie-buzz.cookie_list', 'minimal') == 'minimal')
-				@foreach (config('cookie-buzz.cookie_categories') as $category => $details)
-					@if ($details['enabled'])
-						<div class="cookie-buzz-category cookie-buzz-category-{{ $category }}">
-							<div class="cookie-buzz-category-header">
-								<h3 class="cookie-buzz-category-title"> <i>+</i> {{ __($details['title']) }}</h3>
-								<label class="cookie-toggle">
-									<input
-										type="checkbox"
-										id="cookie-buzz-checkbox-{{ $category }}"
-										{{ $details['locked'] ? 'disabled checked' : '' }}
-										data-category="{{ $category }}"
-										data-action="{{ $details['js_action'] ?? null }}"
-										aria-label="{{ __($details['title']) }} toggle"
-										onclick="cookieBuzzUpdate(this)"
-									>
-									<span class="cookie-toggle-slider"></span>
-								</label>
-							</div>
-							<p class="cookie-buzz-category-description">{{ __($details['description']) }}</p>
+			@foreach (config('cookie-buzz.cookie_categories') as $category => $details)
+				@if ($details['enabled'])
+					<div class="cookie-buzz-category cookie-buzz-category-{{ $category }}">
+						<div class="cookie-buzz-category-header">
+							<h3 class="cookie-buzz-category-title"> <i>+</i> {{ __($details['title']) }}</h3>
+							<label class="cookie-toggle">
+								<input
+									type="checkbox"
+									id="cookie-buzz-checkbox-{{ $category }}"
+									{{ $details['locked'] ? 'disabled checked' : '' }}
+									data-category="{{ $category }}"
+									data-action="{{ $details['js_action'] ?? null }}"
+									aria-label="{{ __($details['title']) }} toggle"
+									onclick="cookieBuzzUpdate(this)"
+								>
+								<span class="cookie-toggle-slider"></span>
+							</label>
 						</div>
-					@endif
-				@endforeach
-			@endif
+						<p class="cookie-buzz-category-description">{{ __($details['description']) }}</p>
+					</div>
+				@endif
+			@endforeach
 
 			<div class="cookie-buzz-preferences-tip">
 				@lang(config('cookie-buzz.cookie_modal_policy_text', 'Click the checkbox to update your cookie policy.'))

@@ -2,6 +2,7 @@
 :root {
 	--cookie-color-bg: #ffffff;
 	--cookie-color-text: #111111;
+	--cookie-color-border: #e9e9e9;
 	--cookie-color-policy-bg: #f0f0f0;
 	--cookie-color-btn-bg: #111;
 	--cookie-color-btn-text: #fff;
@@ -20,6 +21,7 @@
 [theme="dark"], .dark {
     --cookie-color-bg: #161a1c;
     --cookie-color-text: #f0f0f0;
+	--cookie-color-border: #252525;
     --cookie-color-policy-bg: #111111;
 	--cookie-color-btn-bg: #fff;
 	--cookie-color-btn-text: #111;
@@ -110,9 +112,10 @@
 	max-height: 400px;
 	padding: 15px;
 	padding-top: 25px;
+	padding-inline: 0px;
 	margin-top: 15px;
 	margin-bottom: 5px;
-	border-block: 1px solid #ddd;
+	border-block: 1px solid var(--cookie-color-border);
 }
 
 .cookie-buzz-button-container {
@@ -308,5 +311,38 @@
 	border-radius: 6px;
 	font-size: 14px;
 	cursor: pointer;
+}
+
+/* Summary */
+
+.cookie-buzz-details {
+	float: left;
+	width: 100%;
+	margin-bottom: 5px;
+	border-radius: 6px;
+}
+
+.cookie-buzz-details[open] .cookie-buzz-summary i{
+	transform: rotate(45deg);
+}
+
+.cookie-buzz-summary {
+	float: left;
+	width: 100%;
+	padding: 10px 15px;
+	border-radius: 6px;
+	border: 1px solid var(--cookie-color-border);
+	cursor: pointer;
+}
+
+.cookie-buzz-summary::marker {
+	cursor: pointer;
+}
+
+.cookie-buzz-summary-description {
+	float: left;
+	width: 100%;
+	padding: 10px 15px;
+	margin-bottom: 5px;
 }
 </style>
