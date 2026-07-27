@@ -151,6 +151,8 @@ php artisan vendor:publish --tag=cookie-buzz-images --force
 php artisan vendor:publish --tag=cookie-buzz-views --force
 # In config/cookie-buzz.php
 php artisan vendor:publish --tag=cookie-buzz-config --force
+# In lang/vendor/cookie-buzz
+php artisan vendor:publish --tag=cookie-buzz-lang --force
 
 # Sample with provider package
 php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --tag="images"
