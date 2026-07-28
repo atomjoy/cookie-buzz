@@ -24,7 +24,7 @@ Change your cookie banner js actions.
 ```php
 <head>
     <!-- CookieBuzz Js Actions -->
-    // @include('cookie-buzz::banner.actions', ['gtmId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX'])
+    // @include('cookie-buzz::banner.actions', ['gtagId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX'])
     <!-- CookieBuzz Js Actions Example -->
     @include('cookie-buzz::banner.actions-mini')
     <!-- CookieBuzz Css Style -->
@@ -44,23 +44,23 @@ Change your cookie banner js actions.
 Save to **view/components/gtag.blade.php** and add to page **head** tag.
 
 ```php
-<!-- @include('components.gtag', ['gtmId' => 'GTM-XXXXXXX']) -->
+<!-- @include('components.gtag', ['gtagId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX']) -->
 
 @props([
-    'gtmId' => null, // Set TAG_ID GTM
+    'gtagId' => null, // Set Gtag Id
     'pixelId' => null, // Set Pixel Id
 ])
 
-@if($gtmId)
+@if($gtagId)
 <!-- INIT GOOGLE TAG (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gtmId }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gtagId }}"></script>
 <script>
     window.dataLayer = window.dataLayer || []
     function gtag() {
         dataLayer.push(arguments)
     }
     gtag('js', new Date())
-    gtag('config', '{{ $gtmId }}')
+    gtag('config', '{{ $gtagId }}')
     gtag('consent', 'default', {
         ad_storage: 'denied',
         ad_user_data: 'denied',
