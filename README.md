@@ -71,8 +71,8 @@ php artisan vendor:publish --tag=cookie-buzz-config --force
 # In lang/vendor/cookie-buzz
 php artisan vendor:publish --tag=cookie-buzz-lang --force
 
-# Sample with provider package
-php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --tag="images"
+# Your users can also publish all publishable files
+php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --force
 ```
 
 ## GoogleTagManager Custom Events

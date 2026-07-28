@@ -13,11 +13,11 @@
 
 	// Required by law: Block tracking by default before user's decision
 	gtag('consent', 'default', {
-		'ad_storage': 'denied',
-		'analytics_storage': 'denied',
-		'ad_user_data': 'denied',
-		'ad_personalization': 'denied',
-		'wait_for_update': 500
+		ad_storage: 'denied',
+		analytics_storage: 'denied',
+		ad_user_data: 'denied',
+		ad_personalization: 'denied',
+		wait_for_update: 1000
 	});
 </script>
 
@@ -32,8 +32,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 // Update cookie
 function onConsentUpdated() {
+	window.dataLayer = window.dataLayer || [];
 	window.dataLayer.push({
-		'event': 'cookie_consent_update',
+		event: 'cookie_consent_update',
 	});
 }
 
