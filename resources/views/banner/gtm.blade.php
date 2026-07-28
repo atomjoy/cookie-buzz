@@ -30,6 +30,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <script>
+// Update cookie
+function onConsentUpdated() {
+	window.dataLayer.push({
+		'event': 'cookie_consent_update',
+	});
+}
+
 // Required for js_actions in coockie banner events
 function loadAnalytics() {
     console.log("Analytics action works!");
@@ -39,6 +46,7 @@ function loadAnalytics() {
 			gtag('consent', 'update', {
 				analytics_storage: 'granted',
 			});
+			onConsentUpdated();
 		}
 	} catch (e) {
 		console.error(e);
@@ -55,6 +63,7 @@ function loadMarketing() {
 				ad_user_data: 'granted',
 				ad_personalization: 'granted',
 			});
+			onConsentUpdated();
 		}
 	} catch (e) {
 		console.error(e);
@@ -69,6 +78,7 @@ function rejectAnalytics() {
 			gtag('consent', 'update', {
 				analytics_storage: 'denied',
 			});
+			onConsentUpdated()
 		}
 	} catch (e) {
 		console.error(e);
@@ -85,6 +95,7 @@ function rejectMarketing() {
 				ad_user_data: 'denied',
 				ad_personalization: 'denied',
 			});
+			onConsentUpdated();
 		}
 	} catch (e) {
 		console.error(e);
