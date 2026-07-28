@@ -1,13 +1,13 @@
-{{-- @include('cookie-buz:banner.actions', ['gtmId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX']) --}}
+{{-- @include('cookie-buz:banner.actions', ['gtagId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX']) --}}
 
 @props([
-    'gtmId' => null, // Set TAG_ID GTM
+    'gtagId' => null, // Set Google Id
     'pixelId' => null, // Set Pixel Id
 ])
 
-@if($gtmId)
+@if($gtagId)
 <!-- INIT GOOGLE TAG (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gtmId }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gtagId }}"></script>
 <script>
     window.dataLayer = window.dataLayer || []
     function gtag() {
@@ -15,7 +15,7 @@
     }
 
     gtag('js', new Date())
-    gtag('config', '{{ $gtmId }}')
+    gtag('config', '{{ $gtagId }}')
     gtag('consent', 'default', {
         ad_storage: 'denied',
         ad_user_data: 'denied',
@@ -44,13 +44,26 @@
 @endif
 
 <script>
+function checkFacebookPixel() {
+	if (window.fbq && window.fbq.getState) {
+		const pixels = window.fbq.getState().pixels;
+		if (pixels.length === 0) {
+			console.error("Pixel not initialized!");
+		} else {
+			console.log("Pixel loaded:", pixels);
+		}
+	}
+}
+
 function loadAnalytics() {
     console.log("Analytics action works!");
 
 	try {
-		gtag('consent', 'update', {
-			analytics_storage: 'granted',
-		});
+		if (typeof gtag === 'function') {
+			gtag('consent', 'update', {
+				analytics_storage: 'granted',
+			});
+		}
 	} catch (e) {
 		console.log(e);
 	}
@@ -60,17 +73,18 @@ function loadMarketing() {
     console.log("Marketing action works!");
 
 	try {
-		gtag('consent', 'update', {
-			ad_storage: 'granted',
-			ad_user_data: 'granted',
-			ad_personalization: 'granted',
-		});
+		if (typeof gtag === 'function') {
+			gtag('consent', 'update', {
+				ad_storage: 'granted',
+				ad_user_data: 'granted',
+				ad_personalization: 'granted',
+			});
+		}
 
-@if($pixelId)
 		// Facebook
-		fbq('consent', 'grant');
-@endif
-
+		if (typeof fbq === 'function' && typeof fbq.getState === 'function') {
+			fbq('consent', 'grant');
+		}
 	} catch (e) {
 		console.log(e);
 	}
@@ -80,9 +94,11 @@ function rejectAnalytics() {
     console.log("Reject analytics action works!");
 
 	try {
-		gtag('consent', 'update', {
-			analytics_storage: 'denied',
-		});
+		if (typeof gtag === 'function') {
+			gtag('consent', 'update', {
+				analytics_storage: 'denied',
+			});
+		}
 	} catch (e) {
 		console.log(e);
 	}
@@ -92,17 +108,18 @@ function rejectMarketing() {
     console.log("Reject marketing action works!");
 
 	try {
-		gtag('consent', 'update', {
-			ad_storage: 'denied',
-			ad_user_data: 'denied',
-			ad_personalization: 'denied',
-		});
+		if (typeof gtag === 'function') {
+			gtag('consent', 'update', {
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+			});
+		}
 
-@if($pixelId)
 		// Facebook
-		fbq('consent', 'revoke');
-@endif
-
+		if (typeof fbq === 'function' && typeof fbq.getState === 'function') {
+			fbq('consent', 'revoke');
+		}
 	} catch (e) {
 		console.log(e);
 	}

@@ -1,0 +1,13 @@
+{{-- GoogleTagManager --}}
+{{-- @include('cookie-buzz:banner.gtm-noscript', ['gtmId' => 'GTM-XXXXXXX']) --}}
+
+@props([
+    'gtmId' => null, // GTM-XXXXXXX
+])
+
+@if($gtmId)
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $gtmId }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+@endif

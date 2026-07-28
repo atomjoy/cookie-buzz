@@ -15,6 +15,12 @@
 	--cookie-buzz-orange: #ea8600;
 	--cookie-buzz-red: #eb0248;
 	--cookie-buzz-mate: #e6f4ea;
+
+	--cookie-buzz-g-green: #3aa757;
+	--cookie-buzz-g-blue: #4688f1;
+	--cookie-buzz-g-navy: #0b57d0;
+	--cookie-buzz-g-red: #ea4335;
+	--cookie-buzz-g-yellow: #fbbc04;
 }
 
 

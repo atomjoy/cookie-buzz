@@ -261,13 +261,6 @@
 			const key = 'cookie_buzz_{{ $prefix }}_' + name;
 			const el = document.getElementById('cookie-buzz-checkbox-' + name)
 
-			// console.log("--------------");
-			// console.log("Category:", category);
-			// console.log("Category Key:", key);
-			// console.log("Category Details:", details);
-			// console.log("Current Storage:", localStorage.getItem(key));
-			// console.log("Locked: ", details['locked']);
-
 			if(el && !details['locked']) {
 				el.checked = localStorage.getItem(key) == 'true' ? true : false;
 				if(el.checked){

@@ -2,6 +2,7 @@
 <p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. You can manage your preferences or reject non-essential cookies at any time.</p>
 
 <h3>Third-Party Cookies (Google & Meta)</h3>
+
 <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: sans-serif; font-size: 14px; text-align: left;">
   <thead>
     <tr style="background-color: #f2f2f2;">
