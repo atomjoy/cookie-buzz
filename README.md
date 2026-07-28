@@ -1,6 +1,6 @@
-# Cookie Consent Banner in Laravel
+# Cookie Consent Banner in Laravel (GTM)
 
-CookieBuzz Cookie Consent Banner for Google Analytics and FacebookPixel (dark mode and translations).
+Cookie Buzz is cookie consent website banner for Google Tag Manager in Laravel blade component (dark mode and translations).
 
 ## Install
 
@@ -17,120 +17,37 @@ composer require atomjoy/cookie-buzz
 php artisan vendor:publish --tag=cookie-buzz-images --force
 ```
 
-## Configure
+## Add blade components
 
 Change your cookie banner js actions.
 
 ```php
 <head>
-    <!-- CookieBuzz Js Actions -->
+    <!-- CookieBuzz GoogleTagManager js actions -->
+    @include('cookie-buzz::banner.gtm', ['gtagId' => 'GTM-XXXXXXX'])
+
+    <!-- CookieBuzz gTag js, FacebookPixel js actions -->
     // @include('cookie-buzz::banner.actions', ['gtagId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX'])
-    <!-- CookieBuzz Js Actions Example -->
-    @include('cookie-buzz::banner.actions-mini')
-    <!-- CookieBuzz Css Style -->
+
+    <!-- CookieBuzz js actions console -->
+    // @include('cookie-buzz::banner.actions-mini')
+
+    <!-- CookieBuzz Css style -->
     @include('cookie-buzz::theme.default')
 </head>
 
 <body>
+    <!-- CookieBuzz GoogleTagManager noscript -->
+    @include('cookie-buzz::banner.gtm-noscript', ['gtmId' => 'GTM-XXXXXXX'])
+
+    <!-- PAGE CONTENT HERE -->
+
     <!-- CookieBuzz Banner -->
     @include('cookie-buzz::banner.default')
-    <!-- CookieBuzz Preferences Button -->
+
+    <!-- CookieBuzz Preferences button -->
     @include('cookie-buzz::banner.button')
 </body>
-```
-
-## Js action example
-
-Save to **view/components/gtag.blade.php** and add to page **head** tag.
-
-```php
-<!-- @include('components.gtag', ['gtagId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX']) -->
-
-@props([
-    'gtagId' => null, // Set Gtag Id
-    'pixelId' => null, // Set Pixel Id
-])
-
-@if($gtagId)
-<!-- INIT GOOGLE TAG (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gtagId }}"></script>
-<script>
-    window.dataLayer = window.dataLayer || []
-    function gtag() {
-        dataLayer.push(arguments)
-    }
-    gtag('js', new Date())
-    gtag('config', '{{ $gtagId }}')
-    gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-    })
-</script>
-@endif
-
-@if($pixelId)
-<!-- Facebook Pixel Code -->
-<script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('consent', 'revoke');
-    fbq('init', '{{ $pixelId }}');
-    fbq('track', 'PageView');
-</script>
-@endif
-
-<script>
-function loadAnalytics() {
-    console.log("Analytics action works!");
-
-    gtag('consent', 'update', {
-        analytics_storage: 'granted',
-    });
-}
-
-function loadMarketing() {
-    console.log("Marketing action works!");
-
-    gtag('consent', 'update', {
-        ad_storage: 'granted',
-        ad_user_data: 'granted',
-        ad_personalization: 'granted',
-    });
-
-    // Facebook
-    fbq('consent', 'grant');
-}
-
-function rejectAnalytics() {
-    console.log("Analytics action works!");
-
-    gtag('consent', 'update', {
-        analytics_storage: 'denied',
-    });
-}
-
-function rejectMarketing() {
-    console.log("Marketing action works!");
-
-    gtag('consent', 'update', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-    });
-
-    // Facebook
-    fbq('consent', 'revoke');
-}
-</script>
 ```
 
 ## Run
@@ -142,7 +59,7 @@ php artisan serve
 php artisan serve --host=localhost --port=8000
 ```
 
-## Publish config, themes, translations (optional)
+## Publish images, config, views, translations (optional)
 
 ```sh
 # In public/vendor/cookie-buzz
@@ -158,54 +75,78 @@ php artisan vendor:publish --tag=cookie-buzz-lang --force
 php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --tag="images"
 ```
 
-## Google gtag manager event
+## GoogleTagManager Custom Events
 
 ```html
 <script>
-    function triggerEvents() {
-        // With push
+    function setBeforeInitGtm() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ user_id: '123' }); // No event here
+    }
+
+    function triggerLogin() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'login', user_id: '123', user_email: 'test@example.com' });
+    }
+
+    function triggerPurchase() {
         window.dataLayer.push({
-            'gtm.start': new Date().getTime(),
-            event: 'gtm.js',
+            event: 'purchase',
+            user_id: '123',
+            item: {
+                id: 25,
+                price: 99.99,
+            },
+            time: new Date().getTime(),
         });
 
-        // With gtag
-        gtag('event', 'button_click', {
-            id: 'contact1',
-            name: 'Form Contact',
-        });
-
-        gtag('event', 'signup_newsletter', {
-            method: 'web',
+        gtag('event', 'purchase', {
+            user_id: '123',
+            item: {
+                id: 25,
+                price: 99.99,
+            },
+            time: new Date().getTime(),
         });
     }
 
-    function handleUserLogin(userId) {
+    function triggerSubscribe() {
+        gtag('event', 'signup_newsletter', {
+            method: 'web',
+            email: 'test@example.com',
+        });
+    }
+
+    function handleUserLogin(userId, userEmail) {
         // Example function called after successful login
         if (userId) {
             gtag('set', { user_id: userId });
             console.log('User ID set for GA:', userId);
 
             // You can also send a login event
-            gtag('event', 'login', { method: 'your_login_method' });
+            gtag('event', 'login', { user_id: userId, user_email: userEmail });
         }
     }
 
     function handleUserLogout() {
         // Example function called after logout
-        gtag('set', { user_id: null });
+        gtag('set', { user_id: null, user_email: null });
         console.log('User ID cleared for GA.');
 
         // You can also send a logout event
         gtag('event', 'logout');
     }
 
-    gtag('get', target, 'client_id', (id) => {
-        document.cookie = `ga_cid=${id}; path=/; SameSite=Lax`;
-    });
-    gtag('get', target, 'session_id', (id) => {
-        document.cookie = `ga_sid=${id}; path=/; SameSite=Lax`;
-    });
+    function handleGtmCid() {
+        // Save GTM clientId, sessionId to local cookie
+        gtag('get', target, 'client_id', (id) => {
+            document.cookie = `ga_cid=${id};path=/;SameSite=Lax`;
+        });
+
+        gtag('get', target, 'session_id', (id) => {
+            document.cookie = `ga_sid=${id};path=/;SameSite=Lax`;
+        });
+    }
 </script>
 ```
 

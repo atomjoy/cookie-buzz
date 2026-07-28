@@ -2,23 +2,23 @@
 {{-- @include('cookie-buzz:banner.gtm', ['gtmId' => 'GTM-XXXXXXX']) --}}
 
 @props([
-    'gtmId' => null, // GTM-XXXXXXX
+	'gtmId' => null, // GTM-XXXXXXX
 ])
 
 @if($gtmId)
 <!-- Definition of the gtag() function and default consents (Consent Mode v2) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){window.dataLayer.push(arguments);}
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){window.dataLayer.push(arguments);}
 
-  // Required by law: Block tracking by default before user's decision
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'analytics_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'wait_for_update': 500
-  });
+	// Required by law: Block tracking by default before user's decision
+	gtag('consent', 'default', {
+		'ad_storage': 'denied',
+		'analytics_storage': 'denied',
+		'ad_user_data': 'denied',
+		'ad_personalization': 'denied',
+		'wait_for_update': 500
+	});
 </script>
 
 <!-- Google Tag Manager -->
@@ -30,6 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <script>
+// Required for js_actions in coockie banner events
 function loadAnalytics() {
     console.log("Analytics action works!");
 
