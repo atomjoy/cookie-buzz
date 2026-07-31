@@ -74,7 +74,7 @@
 							<summary class="cookie-buzz-summary">
 								<span class="cookie-buzz-category-title"> {{ __($details['title']) }}</span>
 
-								<label class="cookie-toggle" style="float: right">
+								<label class="cookie-toggle cookie-buzz-toggle">
 									<input
 										type="checkbox"
 										id="cookie-buzz-checkbox-{{ $category }}"
@@ -204,8 +204,10 @@
 	function evalAction(name) {
 		// Run function from string
 		if(name) {
-			const action = eval(name);
-			action()
+			const action = actionsList[name];
+			if (typeof action === "function") {
+				action()
+			}
 		}
 	}
 

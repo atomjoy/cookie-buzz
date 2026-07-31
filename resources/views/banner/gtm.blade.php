@@ -30,6 +30,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <script>
+// Actions list
+const actionsList = {
+	loadAnalytics: () => loadAnalytics(),
+	loadMarketing: () => loadMarketing(),
+	rejectAnalytics: () => rejectAnalytics(),
+	rejectMarketing: () => rejectMarketing(),
+}
+
 // Update cookie
 function onConsentUpdated() {
 	window.dataLayer = window.dataLayer || [];

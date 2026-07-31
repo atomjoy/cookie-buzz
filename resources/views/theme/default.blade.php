@@ -265,6 +265,7 @@
 
 /* Improved Toggle Switch */
 .cookie-toggle {
+	float: right;
     position: relative;
     display: inline-block;
     width: 44px;
