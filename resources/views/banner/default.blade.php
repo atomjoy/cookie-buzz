@@ -82,6 +82,7 @@
 										{{ $details['locked'] ? 'disabled checked' : '' }}
 										data-category="{{ $category }}"
 										data-action="{{ $details['js_action'] ?? null }}"
+										data-action_reject="{{ $details['js_action_reject'] ?? null }}"
 										aria-label="{{ __($details['title']) }} toggle"
 									>
 									<span class="cookie-toggle-slider"></span>
@@ -110,6 +111,7 @@
 										{{ $details['locked'] ? 'disabled checked' : '' }}
 										data-category="{{ $category }}"
 										data-action="{{ $details['js_action'] ?? null }}"
+										data-action_reject="{{ $details['js_action_reject'] ?? null }}"
 										aria-label="{{ __($details['title']) }} toggle"
 									>
 									<span class="cookie-toggle-slider"></span>
@@ -204,6 +206,8 @@
 		// Run action function if checked
 		if(checkbox.checked){
 			evalAction(checkbox.dataset.action)
+		} else {
+			evalAction(checkbox.dataset.action_reject)
 		}
 		console.log("Update cookie key:", key, "Value:", localStorage.getItem(key));
 	}

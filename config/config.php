@@ -87,10 +87,10 @@ return [
             'description' => 'These cookies are used for advertising and tracking purposes.',
         ],
         'preferences' => [
-            'enabled' => env('COOKIE_BUZZ_PREFERENCES', false),
+            'enabled' => env('COOKIE_BUZZ_PREFERENCES', true),
             'locked' => false,
-            // 'js_action' => null,
-            // 'js_action_reject' => null,
+            'js_action' => 'loadPreferences',
+            'js_action_reject' => 'rejectPreferences',
             'title' => 'Preferences Cookies',
             'description' => 'These cookies allow the website to remember user preferences.',
         ]

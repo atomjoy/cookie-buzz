@@ -12,6 +12,8 @@ const actionsList = {
 	loadMarketing,
 	rejectAnalytics,
 	rejectMarketing,
+	loadPreferences,
+	rejectPreferences
 }
 
 // Update cookie
@@ -55,6 +57,11 @@ function loadMarketing() {
 	}
 }
 
+function loadPreferences() {
+    console.log("Preferences action works!");
+	onConsentUpdated();
+}
+
 function rejectAnalytics() {
     console.log("Reject analytics action works!");
 
@@ -85,6 +92,11 @@ function rejectMarketing() {
 	} catch (e) {
 		console.error(e);
 	}
+}
+
+function rejectPreferences() {
+    console.log("Reject preferences action works!");
+	onConsentUpdated();
 }
 </script>
 
