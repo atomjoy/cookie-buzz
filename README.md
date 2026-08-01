@@ -29,9 +29,6 @@ Change your cookie banner js actions.
     <!-- CookieBuzz gTag js, FacebookPixel js actions -->
     // @include('cookie-buzz::banner.actions', ['gtagId' => 'G-XXXXXXX', 'pixelId' => 'F-XXXXXXX'])
 
-    <!-- CookieBuzz js actions console -->
-    // @include('cookie-buzz::banner.actions-mini')
-
     <!-- CookieBuzz Css style -->
     @include('cookie-buzz::theme.default')
 </head>

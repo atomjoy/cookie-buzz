@@ -24,7 +24,7 @@ function onConsentUpdated() {
 	});
 }
 
-// Required for js_actions in coockie banner events
+// Required for js_action in coockie banner events
 function loadAnalytics() {
     console.log("Analytics action works!");
 
@@ -59,9 +59,16 @@ function loadMarketing() {
 
 function loadPreferences() {
     console.log("Preferences action works!");
+
+	// Create own function
+	if (typeof updateLoadPreferences === 'function') {
+		updateLoadPreferences()
+	}
+
 	onConsentUpdated();
 }
 
+// Required for js_action_reject in coockie banner events
 function rejectAnalytics() {
     console.log("Reject analytics action works!");
 
@@ -96,6 +103,12 @@ function rejectMarketing() {
 
 function rejectPreferences() {
     console.log("Reject preferences action works!");
+
+	// Create own function
+	if (typeof updateRejectPreferences === 'function') {
+		updateRejectPreferences()
+	}
+
 	onConsentUpdated();
 }
 </script>
