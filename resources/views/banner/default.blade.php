@@ -78,11 +78,11 @@
 									<input
 										type="checkbox"
 										id="cookie-buzz-checkbox-{{ $category }}"
+										class="cookie-buzz-checkbox"
 										{{ $details['locked'] ? 'disabled checked' : '' }}
 										data-category="{{ $category }}"
 										data-action="{{ $details['js_action'] ?? null }}"
 										aria-label="{{ __($details['title']) }} toggle"
-										onclick="cookieBuzzUpdate(this)"
 									>
 									<span class="cookie-toggle-slider"></span>
 								</label>
@@ -106,11 +106,11 @@
 									<input
 										type="checkbox"
 										id="cookie-buzz-checkbox-{{ $category }}"
+										class="cookie-buzz-checkbox"
 										{{ $details['locked'] ? 'disabled checked' : '' }}
 										data-category="{{ $category }}"
 										data-action="{{ $details['js_action'] ?? null }}"
 										aria-label="{{ __($details['title']) }} toggle"
-										onclick="cookieBuzzUpdate(this)"
 									>
 									<span class="cookie-toggle-slider"></span>
 								</label>
@@ -148,6 +148,13 @@
 	const cookieBuzzReject = document.getElementById('cookie-buzz-reject')
 	const cookieBuzzAcceptPreferences = document.getElementById('cookie-buzz-accept-preferences')
 	const cookieBuzzRejectPreferences = document.getElementById('cookie-buzz-reject-preferences')
+	const cookiBuzzCheckboxes = document.querySelectorAll('.cookie-buzz-checkbox')
+
+	cookiBuzzCheckboxes.forEach(el => {
+		el.addEventListener('click', function(e) {
+			cookieBuzzUpdate(e.target);
+		})
+	})
 
 	cookieBuzzClose.addEventListener('click', function(e) {
 		toggleCookieBuzzPreferences()
