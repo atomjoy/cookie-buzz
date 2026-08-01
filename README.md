@@ -75,6 +75,14 @@ php artisan vendor:publish --tag=cookie-buzz-lang --force
 php artisan vendor:publish --provider='CookieBuzz\CookieBuzzServiceProvider' --force
 ```
 
+## Csp for banner
+
+Add AppSmartPolicy.php in config/csp.php file.
+
+```sh
+atomjoy/csp-spatie
+```
+
 ## GoogleTagManager Custom Events
 
 ```html
