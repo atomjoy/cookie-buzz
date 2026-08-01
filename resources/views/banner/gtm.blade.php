@@ -60,12 +60,14 @@ function loadMarketing() {
 function loadPreferences() {
     console.log("Preferences action works!");
 
-	// Create own function
-	if (typeof updateLoadPreferences === 'function') {
-		updateLoadPreferences()
+	try {
+		// Create own function
+		if (typeof updateLoadPreferences === 'function') {
+			updateLoadPreferences()
+		}
+	} catch (e) {
+		console.error(e);
 	}
-
-	onConsentUpdated();
 }
 
 // Required for js_action_reject in coockie banner events
@@ -104,12 +106,14 @@ function rejectMarketing() {
 function rejectPreferences() {
     console.log("Reject preferences action works!");
 
-	// Create own function
-	if (typeof updateRejectPreferences === 'function') {
-		updateRejectPreferences()
+	try {
+		// Create own function
+		if (typeof updateRejectPreferences === 'function') {
+			updateRejectPreferences()
+		}
+	} catch (e) {
+		console.error(e);
 	}
-
-	onConsentUpdated();
 }
 </script>
 
