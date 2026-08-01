@@ -65,7 +65,7 @@ class CookieBuzzServiceProvider extends ServiceProvider
 
             $this->publishes([
                 __DIR__ . '/../public' => public_path('vendor/cookie-buzz')
-            ], 'cookie-buzz-images');
+            ], 'cookie-buzz-public');
 
             $this->publishes([
                 __DIR__ . '/../lang' => base_path('lang/vendor/cookie-buzz'),

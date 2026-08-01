@@ -13,8 +13,8 @@ composer require atomjoy/cookie-buzz
 ### After install
 
 ```sh
-# Publish images to public/vendor/cookie-buzz
-php artisan vendor:publish --tag=cookie-buzz-images --force
+# Publish styles, images to public/vendor/cookie-buzz
+php artisan vendor:publish --tag=cookie-buzz-public --force
 ```
 
 ## Add blade components
@@ -60,7 +60,7 @@ php artisan serve --host=localhost --port=8000
 
 ```sh
 # In public/vendor/cookie-buzz
-php artisan vendor:publish --tag=cookie-buzz-images --force
+php artisan vendor:publish --tag=cookie-buzz-public --force
 # In resources/views/vendor/cookie-buzz
 php artisan vendor:publish --tag=cookie-buzz-views --force
 # In config/cookie-buzz.php
