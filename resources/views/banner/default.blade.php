@@ -142,6 +142,8 @@
 </div>
 
 <script>
+	const cookieBuzzCategories = JSON.parse(@json($categories));
+
 	const cookieBuzzBanner = document.getElementById('cookie-buzz-banner-wrapper')
 	const cookieBuzzModal = document.getElementById('cookie-buzz-preferences-wrapper')
 	const cookieBuzzClose = document.getElementById('cookie-buzz-preferences-close')
@@ -168,22 +170,22 @@
 
 	cookieBuzzReject.addEventListener('click', function(e) {
 		toggleCookieBuzzBanner()
-		rejectCookieBuzz()
+		rejectCookieBuzz(cookieBuzzCategories)
 	})
 
 	cookieBuzzAccept.addEventListener('click', function(e) {
 		toggleCookieBuzzBanner()
-		allowCookieBuzz()
+		allowCookieBuzz(cookieBuzzCategories)
 	})
 
 	cookieBuzzRejectPreferences.addEventListener('click', function(e) {
 		closeCookieBuzzBanner()
-		rejectCookieBuzz()
+		rejectCookieBuzz(cookieBuzzCategories)
 	})
 
 	cookieBuzzAcceptPreferences.addEventListener('click', function(e) {
 		closeCookieBuzzBanner()
-		allowCookieBuzz()
+		allowCookieBuzz(cookieBuzzCategories)
 	})
 
 	function toggleCookieBuzzPreferences() {
@@ -222,9 +224,7 @@
 		}
 	}
 
-	function allowCookieBuzz() {
-		const obj = JSON.parse(@json($categories));
-
+	function allowCookieBuzz(obj) {
 		Object.entries(obj).forEach(category => {
 			const name = category[0] ?? 'null';
 			const details = category[1] ?? null;
@@ -239,9 +239,7 @@
 		})
 	}
 
-	function rejectCookieBuzz() {
-		const obj = JSON.parse(@json($categories));
-
+	function rejectCookieBuzz(obj) {
 		Object.entries(obj).forEach(category => {
 			const name = category[0] ?? 'null';
 			const details = category[1] ?? null;
@@ -256,18 +254,7 @@
 		})
 	}
 
-	function loadCookieBuzzBanner() {
-		const hide = localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') ?? 0
-		if(hide == 1) {
-			cookieBuzzBanner.classList.add('hide-banner')
-		} else {
-			cookieBuzzBanner.classList.remove('hide-banner')
-		}
-	}
-
-	function loadCookieBuzz() {
-		const obj = JSON.parse(@json($categories));
-
+	function loadCookieBuzz(obj) {
 		Object.entries(obj).forEach(category => {
 			const name = category[0] ?? 'null';
 			const details = category[1] ?? null;
@@ -283,6 +270,15 @@
 		})
 	}
 
+	function loadCookieBuzzBanner() {
+		const hide = localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') ?? 0
+		if(hide == 1) {
+			cookieBuzzBanner.classList.add('hide-banner')
+		} else {
+			cookieBuzzBanner.classList.remove('hide-banner')
+		}
+	}
+
 	loadCookieBuzzBanner();
-	loadCookieBuzz();
+	loadCookieBuzz(cookieBuzzCategories);
 </script>
