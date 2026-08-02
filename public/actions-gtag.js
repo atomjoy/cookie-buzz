@@ -1,4 +1,4 @@
-// GTM Actions list
+// Actions list
 const actionsList = {
     loadAnalytics,
     loadMarketing,
@@ -8,15 +8,17 @@ const actionsList = {
     rejectPreferences,
 };
 
-// Update cookie
-function onConsentUpdated() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        event: 'cookie_consent_update',
-    });
+function checkFacebookPixel() {
+    if (window.fbq && window.fbq.getState) {
+        const pixels = window.fbq.getState().pixels;
+        if (pixels.length === 0) {
+            console.error('Pixel not initialized!');
+        } else {
+            console.log('Pixel loaded:', pixels);
+        }
+    }
 }
 
-// Required for js_action in coockie banner events
 function loadAnalytics() {
     console.log('Analytics action works!');
 
@@ -25,10 +27,9 @@ function loadAnalytics() {
             gtag('consent', 'update', {
                 analytics_storage: 'granted',
             });
-            onConsentUpdated();
         }
     } catch (e) {
-        console.error(e);
+        console.log(e);
     }
 }
 
@@ -42,10 +43,14 @@ function loadMarketing() {
                 ad_user_data: 'granted',
                 ad_personalization: 'granted',
             });
-            onConsentUpdated();
+        }
+
+        // Facebook
+        if (typeof fbq === 'function' && typeof fbq.getState === 'function') {
+            fbq('consent', 'grant');
         }
     } catch (e) {
-        console.error(e);
+        console.log(e);
     }
 }
 
@@ -62,7 +67,6 @@ function loadPreferences() {
     }
 }
 
-// Required for js_action_reject in coockie banner events
 function rejectAnalytics() {
     console.log('Reject analytics action works!');
 
@@ -71,10 +75,9 @@ function rejectAnalytics() {
             gtag('consent', 'update', {
                 analytics_storage: 'denied',
             });
-            onConsentUpdated();
         }
     } catch (e) {
-        console.error(e);
+        console.log(e);
     }
 }
 
@@ -88,10 +91,14 @@ function rejectMarketing() {
                 ad_user_data: 'denied',
                 ad_personalization: 'denied',
             });
-            onConsentUpdated();
+        }
+
+        // Facebook
+        if (typeof fbq === 'function' && typeof fbq.getState === 'function') {
+            fbq('consent', 'revoke');
         }
     } catch (e) {
-        console.error(e);
+        console.log(e);
     }
 }
 

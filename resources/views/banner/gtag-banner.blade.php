@@ -1,0 +1,151 @@
+@props(['cookieConfig' => null])
+
+@php
+    $categories = json_encode(config('cookie-buzz.cookie_categories'));
+    $prefix = json_encode(md5(config('cookie-buzz.cookie_prefix', 'cookie_prefix')));
+    $icon = config('cookie-buzz.cookie_icon_public_path');
+	$icon_url = app()->request->getSchemeAndHttpHost() . '/' . ltrim($icon, '/');
+@endphp
+
+<!-- CookieBuzz Consent Cookie Banner -->
+<script>
+	window.cookieBuzz = JSON.parse(@json($categories))
+	window.cookieBuzzPrefix = JSON.parse(@json($prefix))
+</script>
+
+<div id="cookie-buzz-banner-wrapper">
+	<div id="cookie-buzz-banner">
+		<div id="cookie-buzz-banner-header">
+			@if ($icon)
+			<img src="{{ $icon_url }}" alt="" id="cookie-buzz-icon">
+			@endif
+			<div class="cookie-buzz-banner-title">@lang(config('cookie-buzz.cookie_title', 'Cookie Disclaimer'))</div>
+		</div>
+
+		<p class="cookie-buzz-banner-description">@lang(config('cookie-buzz.cookie_description'))</p>
+
+		<div class="cookie-buzz-button-container">
+			<div class="cookie-buzz-button-actions">
+				<button type="button" id="cookie-buzz-accept" class="cookie-buzz-button cookie-buzz-button-accept" aria-label="@lang('Accept cookies')">
+					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept All'))
+				</button>
+				<button type="button" id="cookie-buzz-reject" class="cookie-buzz-button cookie-buzz-button-reject" aria-label="@lang('Reject cookies')">
+					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject All'))
+				</button>
+			</div>
+
+			@if (config('cookie-buzz.cookie_modal_enabled', true))
+				<button type="button" id="cookie-buzz-preferences-open" class="cookie-buzz-button cookie-buzz-button-preferences" aria-expanded="false" aria-controls="cookie-preferences-modal">
+					@lang(config('cookie-buzz.cookie_preferences_btn_text', 'Manage preferences'))
+				</button>
+			@endif
+		</div>
+
+		@if(config('cookie-buzz.policy_links') != null)
+			@if(count(config('cookie-buzz.policy_links')) > 0)
+				<div class="cookie-buzz-links-container">
+					@foreach (config('cookie-buzz.policy_links') as $links)
+						<div class="cookie-buzz-link-item">
+							<a target="_blank" rel="noopener noreferrer" href="{{ $links['link'] }}"
+							class="cookie-buzz-link">
+								@lang($links['text'])
+							</a>
+						</div>
+					@endforeach
+				</div>
+			@endif
+		@endif
+	</div>
+</div>
+
+<div id="cookie-buzz-preferences-wrapper">
+	<div id="cookie-buzz-preferences">
+		<div>
+			<div class="cookie-buzz-preferences-title">@lang(config('cookie-buzz.cookie_modal_title', 'Cookie Preferences '))
+				<button type="button" id="cookie-buzz-preferences-close" aria-label="@lang('Close cookie preferences')">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            </button>
+		</div>
+			<p class="cookie-buzz-preferences-description">@lang(config('cookie-buzz.cookie_modal_description'))</p>
+		</div>
+
+		<div class="cookie-buzz-categories">
+			@if (config('cookie-buzz.cookie_list', 'minimal') == 'summary')
+				@foreach (config('cookie-buzz.cookie_categories') as $category => $details)
+					@if ($details['enabled'])
+						<details class="cookie-buzz-details animate__inview animate__animated animate__fadeIn">
+							<summary class="cookie-buzz-summary">
+								<span class="cookie-buzz-category-title"> {{ __($details['title']) }}</span>
+
+								<label class="cookie-toggle cookie-buzz-toggle">
+									<input
+										type="checkbox"
+										id="cookie-buzz-checkbox-{{ $category }}"
+										class="cookie-buzz-checkbox"
+										{{ $details['locked'] ? 'disabled checked' : '' }}
+										data-category="{{ $category }}"
+										data-action="{{ $details['js_action'] ?? null }}"
+										data-action_reject="{{ $details['js_action_reject'] ?? null }}"
+										aria-label="{{ __($details['title']) }} toggle"
+									>
+									<span class="cookie-toggle-slider"></span>
+								</label>
+							</summary>
+
+							<div class="cookie-buzz-summary-description">
+								{{ __($details['description']) }}
+							</div>
+						</details>
+					@endif
+				@endforeach
+			@endif
+
+			@if (config('cookie-buzz.cookie_list', 'minimal') == 'minimal')
+				@foreach (config('cookie-buzz.cookie_categories') as $category => $details)
+					@if ($details['enabled'])
+						<div class="cookie-buzz-category cookie-buzz-category-{{ $category }}">
+							<div class="cookie-buzz-category-header">
+								<h3 class="cookie-buzz-category-title"> <i>+</i> {{ __($details['title']) }}</h3>
+								<label class="cookie-toggle">
+									<input
+										type="checkbox"
+										id="cookie-buzz-checkbox-{{ $category }}"
+										class="cookie-buzz-checkbox"
+										{{ $details['locked'] ? 'disabled checked' : '' }}
+										data-category="{{ $category }}"
+										data-action="{{ $details['js_action'] ?? null }}"
+										data-action_reject="{{ $details['js_action_reject'] ?? null }}"
+										aria-label="{{ __($details['title']) }} toggle"
+									>
+									<span class="cookie-toggle-slider"></span>
+								</label>
+							</div>
+							<p class="cookie-buzz-category-description">{{ __($details['description']) }}</p>
+						</div>
+					@endif
+				@endforeach
+			@endif
+
+			<div class="cookie-buzz-preferences-tip">
+				@lang(config('cookie-buzz.cookie_modal_policy_text', 'Click the checkbox to update your cookie policy.'))
+			</div>
+		</div>
+
+		<div class="cookie-buzz-preferences-modal-footer">
+            <div class="cookie-buzz-preferences-group">
+				<button type="button" id="cookie-buzz-accept-preferences" class="cookie-buzz-button cookie-buzz-button-preferences-accept" aria-label="@lang('Accept cookies')">
+					@lang(config('cookie-buzz.cookie_accept_btn_text', 'Accept All'))
+				</button>
+				<button type="button" id="cookie-buzz-reject-preferences" class="cookie-buzz-button cookie-buzz-button-preferences-reject" aria-label="@lang('Reject cookies')">
+					@lang(config('cookie-buzz.cookie_reject_btn_text', 'Reject All'))
+				</button>
+            </div>
+        </div>
+	</div>
+</div>
+
+<script src="/vendor/cookie-buzz/actions-gtag.js"></script>
+<script src="/vendor/cookie-buzz/default.js"></script>

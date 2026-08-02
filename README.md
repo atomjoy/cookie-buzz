@@ -10,7 +10,7 @@ cd test
 composer require atomjoy/cookie-buzz
 ```
 
-### After install
+### After install (required)
 
 ```sh
 # Publish styles, js, images to public/vendor/cookie-buzz
@@ -19,14 +19,12 @@ php artisan vendor:publish --tag=cookie-buzz-public --force
 
 ## Add blade components
 
-Change your cookie banner js actions.
-
 ```php
 <head>
-    <!-- CookieBuzz GoogleTagManager js actions -->
+    <!-- CookieBuzz GoogleTagManager -->
     @include('cookie-buzz::banner.gtm', ['gtagId' => 'GTM-XXXXXXX'])
 
-    <!-- CookieBuzz Css style -->
+    <!-- CookieBuzz CSS style -->
     @include('cookie-buzz::theme.default')
 </head>
 
@@ -37,7 +35,7 @@ Change your cookie banner js actions.
     <!-- PAGE CONTENT HERE -->
 
     <!-- CookieBuzz Banner -->
-    @include('cookie-buzz::banner.default')
+    @include('cookie-buzz::banner.gtm-banner')
 
     <!-- CookieBuzz Preferences button -->
     @include('cookie-buzz::banner.button')
