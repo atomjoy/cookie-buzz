@@ -13,7 +13,7 @@ composer require atomjoy/cookie-buzz
 ### After install
 
 ```sh
-# Publish styles, images to public/vendor/cookie-buzz
+# Publish styles, js, images to public/vendor/cookie-buzz
 php artisan vendor:publish --tag=cookie-buzz-public --force
 ```
 

@@ -1,5 +1,5 @@
 const cookieBuzzCategories = window.cookieBuzz;
-
+const cookieBuzzPrefix = window.cookieBuzzPrefix;
 const cookieBuzzBanner = document.getElementById('cookie-buzz-banner-wrapper');
 const cookieBuzzModal = document.getElementById('cookie-buzz-preferences-wrapper');
 const cookieBuzzClose = document.getElementById('cookie-buzz-preferences-close');
@@ -50,16 +50,16 @@ function toggleCookieBuzzPreferences() {
 
 function toggleCookieBuzzBanner() {
     cookieBuzzBanner.classList.toggle('hide-banner');
-    localStorage.setItem('cookie-buuz-banner-{{ $prefix }}', localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') == 1 ? 0 : 1);
+    localStorage.setItem('cookie-buuz-banner-' + cookieBuzzPrefix, localStorage.getItem('cookie-buuz-banner-' + cookieBuzzPrefix) == 1 ? 0 : 1);
 }
 
 function closeCookieBuzzBanner() {
     cookieBuzzBanner.classList.add('hide-banner');
-    localStorage.setItem('cookie-buuz-banner-{{ $prefix }}', 1);
+    localStorage.setItem('cookie-buuz-banner-' + cookieBuzzPrefix, 1);
 }
 
 function cookieBuzzUpdate(checkbox) {
-    const key = 'cookie_buzz_{{ $prefix }}_' + checkbox.dataset.category;
+    const key = 'cookie_buzz_' + cookieBuzzPrefix + '_' + checkbox.dataset.category;
     localStorage.setItem(key, checkbox.checked);
     // Run action function if checked
     if (checkbox.checked) {
@@ -84,7 +84,7 @@ function allowCookieBuzz(obj) {
     Object.entries(obj).forEach((category) => {
         const name = category[0] ?? 'null';
         const details = category[1] ?? null;
-        const key = 'cookie_buzz_{{ $prefix }}_' + name;
+        const key = 'cookie_buzz_' + cookieBuzzPrefix + '_' + name;
         const el = document.getElementById('cookie-buzz-checkbox-' + name);
 
         if (el && !details['locked']) {
@@ -99,7 +99,7 @@ function rejectCookieBuzz(obj) {
     Object.entries(obj).forEach((category) => {
         const name = category[0] ?? 'null';
         const details = category[1] ?? null;
-        const key = 'cookie_buzz_{{ $prefix }}_' + name;
+        const key = 'cookie_buzz_' + cookieBuzzPrefix + '_' + name;
         const el = document.getElementById('cookie-buzz-checkbox-' + name);
 
         if (el && !details['locked']) {
@@ -114,7 +114,7 @@ function loadCookieBuzz(obj) {
     Object.entries(obj).forEach((category) => {
         const name = category[0] ?? 'null';
         const details = category[1] ?? null;
-        const key = 'cookie_buzz_{{ $prefix }}_' + name;
+        const key = 'cookie_buzz_' + cookieBuzzPrefix + '_' + name;
         const el = document.getElementById('cookie-buzz-checkbox-' + name);
 
         if (el && !details['locked']) {
@@ -127,7 +127,7 @@ function loadCookieBuzz(obj) {
 }
 
 function loadCookieBuzzBanner() {
-    const hide = localStorage.getItem('cookie-buuz-banner-{{ $prefix }}') ?? 0;
+    const hide = localStorage.getItem('cookie-buuz-banner-' + cookieBuzzPrefix) ?? 0;
     if (hide == 1) {
         cookieBuzzBanner.classList.add('hide-banner');
     } else {

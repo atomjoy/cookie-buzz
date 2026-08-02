@@ -1,8 +1,8 @@
 @props(['cookieConfig' => null])
 
 @php
-    $prefix = md5(config('cookie-buzz.cookie_prefix', 'cookie_prefix'));
     $categories = json_encode(config('cookie-buzz.cookie_categories'));
+    $prefix = json_encode(md5(config('cookie-buzz.cookie_prefix', 'cookie_prefix')));
     $icon = config('cookie-buzz.cookie_icon_public_path');
 	$icon_url = app()->request->getSchemeAndHttpHost() . '/' . ltrim($icon, '/');
 @endphp
@@ -10,6 +10,7 @@
 <!-- CookieBuzz Consent Cookie Banner -->
 <script>
 	window.cookieBuzz = JSON.parse(@json($categories))
+	window.cookieBuzzPrefix = JSON.parse(@json($prefix))
 </script>
 
 <div id="cookie-buzz-banner-wrapper">
